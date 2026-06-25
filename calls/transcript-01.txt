@@ -1,0 +1,25 @@
+Scenario: new_patient
+Call ID:  call_1e768e7e1363137506e61fe0937
+Duration: 209s
+From +15714169522 -> To +18054398008
+------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes.
+[00:07] AGENT: Thank you for calling Pivot Point Orthopaedics. You like to create a demo patient profile? I just need your first and last name to get started.
+[00:16] PATIENT: Oh hey, no I'm actually calling to make an appointment. My name's Jordan Avery.
+[00:22] AGENT: To book an appointment, you'll need a demo patient profile. Would you like to create one now? I just need your first and last name.
+[00:31] PATIENT: Oh sure, that makes sense. It's Jordan Avery.
+[00:38] AGENT: Your patient profile set up and your date of birth is July fourth two thousand for demo purposes. How can I help you today?
+[00:47] PATIENT: Oh actually, my date of birth is March 14th, 1990 — just want to make sure that's right on file. But yeah, I'm calling because I hurt my knee a few days ago and I'd like to get in to see someone as soon as possible.
+[01:02] AGENT: For letting me know. Your date of birth is March fourteenth nineteen ninety. You mentioned hurting your knee and wanting to be seen soon. Just to confirm, are you looking to book an urgent visit for this knee injury?
+[01:15] PATIENT: Yeah, exactly. It's my right knee — I was playing basketball and it got pretty swollen and sore. So I'd love to get the earliest appointment you have available.
+[01:29] AGENT: We have several openings tomorrow, Friday, with your primary providers. Would you prefer to come in the morning or afternoon?
+[01:35] AGENT: I can offer a few specific times once you let me know your preference.
+[01:40] PATIENT: Morning would be great if you've got something available!
+[01:45] AGENT: There are two morning options tomorrow. Eight AM with doctor Zebigniew Likosky, or nine AM with doctor Kelly Noble. Would either of those work for you?
+[01:57] PATIENT: The 9 AM with Dr. Noble sounds good to me!
+[02:04] AGENT: You're scheduled for an in person visit with doctor Kelly at Pivot Point Orthopedics tomorrow, Friday, June twenty sixth at nine AM. Please bring your photo ID, insurance card, a list of your current medications, and any imaging discs if you have them. Would you like me to update your date of birth to March fourteenth nineteen ninety?
+[02:26] PATIENT: Yes please, that's correct. And I do have Blue Cross Blue Shield PPO for insurance — should I give you any other details on that now?
+[02:37] AGENT: Let me send you a secure link by text. So you can upload your Blue Cross Blue Shield PPO card. One moment while I get that started. There's currently no insurance on file for you. Would you like to get a text message at your number ending in nine five two two to upload photos of your Blue Cross Blue Shield PPO card?
+[02:59] PATIENT: Yeah, that number's right — go ahead and send it there!
+[03:05] AGENT: You should have a text now with a link to upload your insurance card photos. Let me know if you have any questions while filling out the form. I'll stay on the line while you complete it.
+[03:19] PATIENT: Oh that's okay, I can fill it out after the call. I think I've got everything I need — appointment tomorrow at 9 AM with Dr. Noble, and I'll get the insurance card uploaded. Thanks so much for your help!

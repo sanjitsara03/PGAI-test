@@ -1,0 +1,11 @@
+[
+  {
+    "index": 1,
+    "scenario": "new_patient",
+    "call_id": "call_1e768e7e1363137506e61fe0937",
+    "duration_s": 209,
+    "call_status": "ended",
+    "transcript": "transcript-01.txt",
+    "recording": "recording-01.wav"
+  }
+]

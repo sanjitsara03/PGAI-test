@@ -27,12 +27,18 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 CALLS_DIR = ROOT / "calls"
 REPORTS_DIR = ROOT / "reports"
 IDENTITY_FILE = ROOT / "config" / "patient_identity.yaml"
+SCENARIOS_FILE = ROOT / "config" / "scenarios.yaml"
 AGENT_STATE = ROOT / ".retell_agent.json"   # generated; holds llm_id + agent_id
 
 
 def patient_identity():
     with open(IDENTITY_FILE) as f:
         return yaml.safe_load(f)
+
+
+def load_scenarios():
+    with open(SCENARIOS_FILE) as f:
+        return yaml.safe_load(f)["scenarios"]
 
 
 def load_agent_state():

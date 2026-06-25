@@ -4,7 +4,9 @@ import urllib.request
 
 from . import config
 
-ROLE = {"agent": "AGENT", "user": "PATIENT"}  # Retell "user" = our patient bot (the caller)
+# In Retell, role "agent" = OUR Retell bot (the patient simulator we built),
+# and role "user" = the party we called (PGAI's front-desk agent).
+ROLE = {"agent": "PATIENT", "user": "AGENT"}
 
 
 def _ts(sec):
