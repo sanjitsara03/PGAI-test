@@ -1,0 +1,29 @@
+# Secrets 
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# Audio recordings
+calls/*.wav
+calls/*.mp3
+calls/*.m4a
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Generated state (account-specific)
+.retell_agent.json

@@ -1,0 +1,10 @@
+# One fixed fake patient, used consistently across every call so the agent's
+# identity verification (name + DOB) behaves the same way each time.
+name: Jordan Avery
+first_name: Jordan
+last_name: Avery
+dob: "1990-03-14"          # 36 years old
+callback_phone: "+15714169522"   # = our Retell caller-ID number
+# Light background for realism (orthopedic practice):
+background: 36-year-old, recently hurt right knee playing basketball.
+insurance: Blue Cross Blue Shield PPO
