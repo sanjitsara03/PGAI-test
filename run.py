@@ -69,6 +69,11 @@ def cmd_scenarios(args):
         print(f"{i:2d}. {s['id']:<28} {s.get('title', '')}")
 
 
+def cmd_analyze(args):
+    from src import judge
+    judge.run_all()
+
+
 def cmd_call(args):
     agent_id = config.load_agent_state().get("agent_id")
     if not agent_id:
@@ -83,7 +88,10 @@ def cmd_call(args):
 
     if args.scenario == "all":
         for i, s in enumerate(scenarios, start=1):
-            _run_one(s, i, agent_id)
+            try:
+                _run_one(s, i, agent_id)
+            except Exception as e:  # keep the unattended batch going if one call fails
+                print(f"!! scenario #{i:02d} {s['id']} failed: {e}")
             if i < len(scenarios):
                 time.sleep(args.gap)
         print("\nAll scenarios complete. See calls/manifest.json")
@@ -95,6 +103,22 @@ def cmd_call(args):
     call = _run_one(scenario, args.index or idx, agent_id)
     print("\n--- transcript ---")
     print(recorder.build_transcript(call) or "(no transcript captured)")
+
+
+def cmd_regen(args):
+    """Rebuild transcript(s) from already-completed calls — free, no new calls placed."""
+    import json
+    manifest_path = config.CALLS_DIR / "manifest.json"
+    if not manifest_path.exists():
+        sys.exit("No calls/manifest.json yet — place a call first.")
+    manifest = json.loads(manifest_path.read_text())
+    targets = manifest if args.index is None else [m for m in manifest if m["index"] == args.index]
+    if not targets:
+        sys.exit(f"No call with index {args.index} in the manifest.")
+    for m in targets:
+        call = retell_client.get_call(m["call_id"])
+        tpath, _ = recorder.save_call(call, index=m["index"], scenario=m["scenario"])
+        print(f"regenerated #{m['index']:02d} {m['scenario']}: {tpath.name}")
 
 
 def main():
@@ -113,6 +137,13 @@ def main():
     c.add_argument("--index", type=int, default=None, help="override file index (single only)")
     c.add_argument("--gap", type=int, default=8, help="seconds between calls in --scenario all")
     c.set_defaults(func=cmd_call)
+
+    r = sub.add_parser("regen", help="rebuild transcript(s) from saved calls (free)")
+    r.add_argument("--index", type=int, default=None, help="single call index; default all")
+    r.set_defaults(func=cmd_regen)
+
+    a = sub.add_parser("analyze", help="run the Claude Opus 4.8 bug judge over all transcripts")
+    a.set_defaults(func=cmd_analyze)
 
     args = p.parse_args()
     args.func(args)

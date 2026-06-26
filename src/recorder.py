@@ -50,7 +50,8 @@ def save_call(call, index, scenario):
     if url:
         ext = ".mp3" if ".mp3" in url.lower() else ".wav"
         rec_path = config.CALLS_DIR / f"recording-{nn}{ext}"
-        _download(url, rec_path)
+        if not rec_path.exists():   # skip re-download when regenerating a transcript
+            _download(url, rec_path)
 
     _update_manifest(index, scenario, call, transcript_path, rec_path)
     return transcript_path, rec_path

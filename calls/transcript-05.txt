@@ -1,0 +1,22 @@
+Scenario: hours_location_insurance
+Call ID:  call_31fdaf9f9faa6612646b72422ff
+Duration: 117s
+From +15714169522 -> To +18054398008
+------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes.
+[00:06] PATIENT: Hi
+[00:06] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with Jordan?
+[00:13] PATIENT: No, this is Jordan Avery — did you already have my name on file, or...?
+[00:20] AGENT: Please provide your date of birth.
+[00:23] PATIENT: Sure, it's March 14th, 1990.
+[00:30] AGENT: Can you please spell your first and last name for me?
+[00:32] AGENT: Just to make sure I have it right?
+[00:34] AGENT: And your date of birth is March fourteenth nineteen ninety. Correct?
+[00:39] PATIENT: Yeah, that's right. And it's J-O-R-D-A-N A-V-E-R-Y.
+[00:46] AGENT: Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us.
+[00:52] AGENT: If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[00:58] PATIENT: I can give you my number — it's +1 571-416-9522.
+[01:07] AGENT: I have your phone number as five seven one four one six nine five two two and your date of birth is March fourteenth nineteen ninety. Is that correct?
+[01:18] PATIENT: Yes, that's correct.
+[01:25] AGENT: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I update your record for follow-up. Connecting you to a representative. Please wait. Hello. You've reached the Pretty Good AI test line. Goodbye.
+[01:45] PATIENT: Oh, wait — before you go, I actually just had a quick question about the office. Could you tell me what your hours are and where you're located?

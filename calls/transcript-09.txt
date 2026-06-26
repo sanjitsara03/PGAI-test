@@ -1,0 +1,23 @@
+Scenario: barge_in
+Call ID:  call_3185a2dc5601141a2946b634007
+Duration: 118s
+From +15714169522 -> To +18054398008
+------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes.
+[00:06] AGENT: Thanks for calling Pivot Point Orthopedics. Part of Pretty Good AI. Am I speaking with Jordan?
+[00:12] PATIENT: Yeah, that's me. Hi.
+[00:17] AGENT: Please tell me your date of birth.
+[00:20] PATIENT: March 14th, 1990.
+[00:24] AGENT: The birthday doesn't match our records but for demo purposes, I'll accept it. How can I help you today?
+[00:31] PATIENT: Yeah, I need to schedule an appointment. Can you get me in soon?
+[00:37] AGENT: Of course. Is this for a new concern that needs urgent attention?
+[00:40] AGENT: A routine checkup, or something else?
+[00:44] PATIENT: It's a follow-up, actually. Nothing urgent, just need to get it on the books.
+[00:50] AGENT: Do you have a specific provider you'd like to see, or is anyone fine?
+[00:56] PATIENT: Anyone's fine, just whoever's got availability.
+[01:02] AGENT: We have several openings this Friday with different providers. Do you prefer morning or afternoon, or should I list the earliest available?
+[01:11] PATIENT: Actually — wait, can I pick the day? I was thinking Wednesday — no wait, make it Friday. Friday works.
+[01:19] AGENT: No problem. Here are some Friday options One o'clock with Carl Mentz, two o'clock with Kelly Noble, or three o'clock with Dugie Hauser. Would any of those work for you?
+[01:31] PATIENT: One o'clock works. I'll take Carl Mentz.
+[01:38] AGENT: You're scheduled for a follow-up with Carl Mentz, PT, tomorrow, Friday, June twenty sixth at one PM at Pivot Point Orthopaedics Please bring your photo ID, insurance card, a list of your medications, and any imaging you have. Anything else you'd like help with?
+[01:56] PATIENT: Nope, that's all I needed. Thanks.

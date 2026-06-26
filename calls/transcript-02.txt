@@ -1,0 +1,25 @@
+Scenario: reschedule
+Call ID:  call_ba3d193265a405b21cdf6b1cf4d
+Duration: 166s
+From +15714169522 -> To +18054398008
+------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes.
+[00:06] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with Jordan?
+[00:13] PATIENT: Yeah, that's me. Hi!
+[00:17] AGENT: Please tell me your date of birth.
+[00:20] PATIENT: Sure, it's March 14th, 1990.
+[00:25] AGENT: The birthday doesn't match our records, but for demo purposes, I'll accept it. How can I help you today?
+[00:32] PATIENT: Hi, yeah, so I have an appointment this Thursday, but something came up at work and I was hoping to reschedule it to sometime next week. Preferably a morning if you have anything available.
+[00:53] PATIENT: Hello? Yeah, sorry — just wanted to see if you could find something next week, maybe a morning slot?
+[01:02] AGENT: I see you have an appointment on Monday, July sixth at nine fifteen AM with Kelly Noble at Nashville two two o Athens Way. Is this the appointment you want to reschedule?
+[01:13] PATIENT: Oh wait, that's a Monday — is that next week? If so, yeah, that's the one. thought it was Thursday though... but yeah, if that's the upcoming one, that's the one I want to move.
+[01:25] AGENT: The next available morning appointments are Wednesday, July eighth at nine fifteen AM and Thursday, July ninth at either nine or nine fifteen AM, all with Kelly Noble at Nashville. Would you like to move your appointment? To one of these times?
+[01:44] PATIENT: Yeah, let's do Wednesday the 8th at 9:15. That works great for me.
+[01:50] AGENT: Can you tell me the reason you need to reschedule your appointment?
+[01:55] PATIENT: Yeah, just something came up at work — a meeting I can't get out of. Nothing major, just a scheduling conflict.
+[02:04] AGENT: You'd like to move your appointment to Wednesday, July eighth at nine fifteen AM? With Kelly Noble at Nashville two two zero Athens Way, Is that correct?
+[02:14] PATIENT: Yes, that's correct!
+[02:21] AGENT: Your appointment has been rescheduled to Wednesday, July eighth at nine fifteen AM with Kelly Noble, MD. Would you like me to send you a text message with these details?
+[02:32] PATIENT: Yes please, that'd be great.
+[02:37] AGENT: I sent the new appointment details to your phone. Is there anything else I can help you with today?
+[02:43] PATIENT: No, that's everything. Thanks so much for your help!

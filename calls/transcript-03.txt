@@ -1,0 +1,25 @@
+Scenario: cancel_policy
+Call ID:  call_8ad8247331573543c61665ba418
+Duration: 112s
+From +15714169522 -> To +18054398008
+------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes. Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good AI. Am I speaking with Jordan?
+[00:13] PATIENT: Yeah, that's me. Hi!
+[00:17] AGENT: Please provide your date of birth.
+[00:20] PATIENT: Sure, it's March 14th, 1990.
+[00:25] AGENT: The birthday doesn't match our records, but for demo purposes, I'll accept it. How can I help you today?
+[00:32] PATIENT: I need to cancel an upcoming appointment. I'm actually going out of town, so I won't be able to make it.
+[00:41] AGENT: Do you have an appointment with Kelly Noble on Wednesday, July eighth?
+[00:44] AGENT: Is this the one you wanna cancel?
+[00:47] PATIENT: Yes, that sounds right. Go ahead and cancel that one, please.
+[00:53] AGENT: Can you tell me a brief reason for canceling?
+[00:55] AGENT: You mentioned going out of town. Would you like me to use that?
+[01:00] PATIENT: Yeah, that works — just put down that I'm going out of town.
+[01:07] AGENT: Appointment with Kelly Noble MD on July eighth has been canceled. Is there anything else I can help you with?
+[01:16] PATIENT: Actually, yeah — is there any cancellation fee or no-show fee I should know about?
+[01:23] AGENT: There is no cancellation. Or no show fee for this appointment.
+[01:27] AGENT: Let me know if you have any other questions or need to reschedule.
+[01:31] PATIENT: Oh good, that's a relief! And if I want to rebook later, what's the best way to do that?
+[01:38] AGENT: You can call us anytime to rebook or I can help you schedule a new appointment whenever you're ready.
+[01:44] AGENT: Just let me know what works best for you.
+[01:47] PATIENT: Perfect, that's easy enough. I'll give you guys a call when I'm back in town. Thanks so much for your help!
