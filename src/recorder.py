@@ -16,11 +16,11 @@ def _ts(sec):
 
 def build_transcript(call):
     lines = []
-    for utt in (call.get("transcript_object") or [])[1:]:
+    for utt in call.get("transcript_object") or []:
         role = ROLE.get(utt.get("role"), (utt.get("role") or "?").upper())
         words = utt.get("words") or []
         start = words[0]["start"] if words else 0
-        content = (utt.get("content") or "").strip()[:60]
+        content = (utt.get("content") or "").strip()
         if content:
             lines.append(f"[{_ts(start)}] {role}: {content}")
     return "\n".join(lines)
@@ -38,7 +38,7 @@ def save_call(call, index, scenario):
     header = (
         f"Scenario: {scenario}\n"
         f"Call ID:  {call.get('call_id')}\n"
-        f"Duration: {(call.get('duration_ms') or 0)}s\n"
+        f"Duration: {(call.get('duration_ms') or 0) // 1000}s\n"
         f"From {call.get('from_number')} -> To {call.get('to_number')}\n"
         + "-" * 60 + "\n"
     )

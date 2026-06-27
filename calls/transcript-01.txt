@@ -1,24 +1,25 @@
 Scenario: new_patient
 Call ID:  call_862ed471c33cddf7c67e501f3a0
-Duration: 144603s
+Duration: 144s
 From +15714169522 -> To +18054398008
 ------------------------------------------------------------
+[00:00] AGENT: This call may be recorded for quality and training purposes.
 [00:06] PATIENT: Hi, thanks
-[00:06] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty 
-[00:14] PATIENT: No, this is Jordan Avery — I'm actually calling in, not bein
+[00:06] AGENT: Thanks for calling Pivot Point Orthopaedics. Part of Pretty Good Am I speaking with Jordan?
+[00:14] PATIENT: No, this is Jordan Avery — I'm actually calling in, not being called. But yeah, Jordan Avery, that's me. How can you help me today?
 [00:23] AGENT: Please provide your date of birth.
 [00:26] PATIENT: Sure, it's March 14th, 1990.
-[00:32] AGENT: Just to confirm, I have your name as Jordan Avery and your d
+[00:32] AGENT: Just to confirm, I have your name as Jordan Avery and your date of birth is March fourteenth nineteen ninety. Is that correct?
 [00:39] AGENT: If so, we can continue.
 [00:40] AGENT: If not, please spell your first and last name for me.
 [00:46] PATIENT: Yes, that's correct!
-[00:52] AGENT: Would you like to use your phone number to look up your reco
-[00:58] AGENT: If you're not sure, just confirm your first and last name an
-[01:06] PATIENT: Actually, I'm a new patient, so I wouldn't have a record on 
-[01:14] AGENT: I can help with general questions about the clinic, appointm
-[01:23] PATIENT: I'd like to book a new patient appointment as soon as possib
-[01:29] AGENT: Vivipoint Orthopedic welcomes new patients and offers appoin
-[01:42] PATIENT: Whatever's soonest works for me — I hurt my knee a few days 
-[01:51] AGENT: Since you're a new patient, I'll connect you to our patient 
-[02:00] AGENT: Connecting you to a representative. Please wait. Hello. You'
-[02:10] PATIENT: Oh, it sounds like the call got disconnected or something we
+[00:52] AGENT: Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us.
+[00:58] AGENT: If you're not sure, just confirm your first and last name and date of birth one more time.
+[01:06] PATIENT: Actually, I'm a new patient, so I wouldn't have a record on file yet. I'm looking to book my first appointment.
+[01:14] AGENT: I can help with general questions about the clinic, appointments, patient cases, medications refill, and insurance. What would you like to do today?
+[01:23] PATIENT: I'd like to book a new patient appointment as soon as possible.
+[01:29] AGENT: Vivipoint Orthopedic welcomes new patients and offers appointments for joint, muscle, and bone concerns. We have openings this week and early next week. Do you have a preferred day or time of day for your first visit?
+[01:42] PATIENT: Whatever's soonest works for me — I hurt my knee a few days ago and I'd really like to get it checked out as soon as possible.
+[01:51] AGENT: Since you're a new patient, I'll connect you to our patient support team. So they can help you schedule your first appointment. Please stay on the line.
+[02:00] AGENT: Connecting you to a representative. Please wait. Hello. You've reached the Pretty Good AI test line. Goodbye.
+[02:10] PATIENT: Oh, it sounds like the call got disconnected or something went wrong there. it be possible to just book the appointment directly, or can you transfer me again? I really do need to get this knee looked at soon.
