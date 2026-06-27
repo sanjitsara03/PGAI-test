@@ -1,77 +1,56 @@
 # Bug Report — Pretty Good AI Voice Agent
 
-**9 distinct issues** across 10 test calls — High: 3, Medium: 4, Low: 2.
+**7 distinct issues** across 10 test calls — High: 1, Medium: 4, Low: 2.
 
-_Surfaced by a Claude Opus 4.8 judge over the call transcripts, then de-duplicated into distinct issues. Each is grounded in a verbatim agent quote with a call reference and timestamp. The full raw per-call findings are in `findings_raw.json`._
 
----
+## 1. Representative transfer dead-ends, abandoning the caller without fulfilling their request
+- **Severity:** High  _(recurs across 2 calls)_
+- **Category:** escalation_gap
+- **Call:** transcript-05.txt at 01:25
+- **Details:** After promising to connect the caller to a human/support team, the transfer terminates straight into a goodbye, leaving the caller's actual goal unfulfilled (new-patient knee appointment in transcript-01; a general info question in transcript-05). The handoff path is broken in both calls. The "Pretty Good AI test line" endpoint may be a demo stub, but the abandoned-call behavior is a real defect.
+- **Evidence:** "I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I update your record for follow-up. Connecting you to a representative. Please wait. Hello. You've reached the Pretty Good AI test line. Goodbye."
+- **Also in:** transcript-01.txt
 
-## 1. Identity verification bypassed: agent accepts mismatched date of birth and proceeds with PHI/medication actions
-- **Severity:** High  _(recurs across 8 calls)_
+## 2. DOB mismatch accepted, bypassing identity verification before sensitive actions
+- **Severity:** Medium  _(recurs across 8 calls)_
 - **Category:** identity_verification
+- **Details:** Across many calls the agent detects that the caller's DOB does not match the record, then proceeds to authenticate and perform sensitive actions anyway — canceling appointments, processing refills (including a controlled substance, oxycodone, in transcript-07), and accessing billing/medication info. In transcript-10 it accepted a deliberately wrong DOB. The "for demo purposes" framing suggests this is intended demo behavior, so severity is kept modest — but in a production build this is a real identity-verification bypass worth confirming is enforced.
 - **Call:** transcript-07.txt at 00:27
-- **Details:** Across nearly every call, the caller's DOB did not match records, yet the agent explicitly acknowledged the mismatch and proceeded to disclose appointment details, reschedule/cancel, and process medication refills. In transcript-07 this even applied to a controlled-substance (opioid) refill. The agent literally says 'for demo purposes' so this is plausibly intended demo behavior; however, in real deployment this is a critical authentication failure that could expose another person's PHI or enable fraudulent prescription/appointment actions.
 - **Evidence:** "The birthday doesn't match our records, but for demo purposes, I'll accept it. How can I help you today?"
 - **Also in:** transcript-02.txt, transcript-03.txt, transcript-04.txt, transcript-06.txt, transcript-08.txt, transcript-09.txt, transcript-10.txt
 
-## 2. Transfer to live representative dead-ends into a test line, stranding the caller
-- **Severity:** High  _(recurs across 2 calls)_
-- **Category:** escalation_gap
-- **Call:** transcript-01.txt at [02:00]
-- **Details:** When the agent escalates to a human (to book a new patient in transcript-01, and to answer hours/location/parking/insurance questions in transcript-05), the transfer immediately terminates at a 'Pretty Good AI test line' goodbye message. The caller is left unbooked, unanswered, and disconnected. In transcript-05 this also caused total failure of the caller's core multi-part informational intent. Likely a demo placeholder endpoint, but in production this fully fails the caller and breaks the escalation path.
-- **Evidence:** "Connecting you to a representative. Please wait. Hello. You've reached the Pretty Good AI test line. Goodbye."
-- **Also in:** transcript-05.txt
-
-## 3. Agent disclosed/near-disclosed third-party PHI based on an unverified verbal claim of permission
-- **Severity:** High
-- **Category:** phi_privacy
-- **Call:** transcript-10.txt at 01:10
-- **Details:** The agent accepted a caller's verbal assertion ('she knows I'm calling') as authorization to retrieve another patient's appointment and MRI results, announcing it was looking them up before later reversing. Accepting an unverified claim to access third-party PHI is a serious privacy handling failure even though it was ultimately walked back.
-- **Evidence:** "Thanks for confirming. Let me check Dana's upcoming appointment and recent MRI results. One moment. I'm looking up Dana's appointment and MRI results now."
-
-## 4. Hallucinated/unverifiable facts presented as confirmed (availability, providers, fees, pharmacy locations)
-- **Severity:** Medium  _(recurs across 6 calls)_
-- **Category:** hallucination
-- **Call:** transcript-07.txt at 02:26
-- **Details:** The agent repeatedly asserts specific facts it cannot verify in a demo environment: concrete appointment openings, named providers and exact times, cancellation/no-show fee policy ('There is no cancellation or no show fee'), turnaround expectations, and specific pharmacy locations/addresses. In a controlled-substance refill context (transcript-07/08) fabricated pharmacy details risk misrouting prescriptions. These are presented as confirmed fact rather than hedged.
-- **Evidence:** "There are a few CVS locations in Springfield, Virginia, but none are listed on Main Street. Here are some options nearby. CVS and Target at Springfield Mall CVS. At Old Keene Mill Road. CVS at Springfield Plaza, CVS at Burke Lake Road, Do any of these sound like the one you use?"
-- **Also in:** transcript-01.txt, transcript-03.txt, transcript-06.txt, transcript-08.txt, transcript-09.txt
-
-## 5. Verification performed before learning caller intent (and applied to new patients with no record)
-- **Severity:** Medium  _(recurs across 3 calls)_
-- **Category:** identity_verification
-- **Call:** transcript-05.txt at 00:20
-- **Details:** The agent front-loads extensive identity verification (DOB, name spelling, phone lookup) before discovering what the caller wants — unnecessary for simple information requests and leading to frustrating dead-ends (transcript-05). In transcript-01 it 'confirmed' a name/DOB as if matching a record for a brand-new patient who has no record on file. Intent should be gathered first and verification scaled to the request.
-- **Evidence:** "Please provide your date of birth."
-- **Also in:** transcript-01.txt
-
-## 6. Dead air / latency forcing caller to prompt 'Hello?' before agent responds
+## 3. Dead-air latency forces the caller to re-prompt with "Hello?"
 - **Severity:** Medium  _(recurs across 2 calls)_
 - **Category:** turn_taking_latency
-- **Call:** transcript-02.txt at 01:02
-- **Details:** After the caller's request, there was a noticeable silence long enough that the patient had to say 'Hello?' before the agent responded. Awkward pacing/latency undermines the conversational experience and may cause callers to repeat themselves or hang up.
-- **Evidence:** "I see you have an appointment on Monday, July sixth at nine fifteen AM with Kelly Noble at Nashville two two o Athens Way. Is this the appointment you want to reschedule?"
+- **Details:** After the caller gives a request, the agent goes silent long enough (~20s) that the caller has to re-prompt with "Hello?" before it responds. Recurs in transcript-08 at 02:55 around a refill request. A conversational-quality defect (the evidence is the patient re-prompting; the gap is on the agent's side).
+- **Call:** transcript-02.txt at 00:53
+- **Evidence:** (patient re-prompt after silence) "Hello? Yeah, sorry — just wanted to see if you could find something next week, maybe a morning slot?"
 - **Also in:** transcript-08.txt
 
-## 7. ASR mishears medication and pharmacy names during read-back
+## 4. Advertises booking, then immediately hands the booking off to humans
 - **Severity:** Medium
-- **Category:** transcription_asr
-- **Call:** transcript-04.txt at 00:47
-- **Details:** The agent misheard 'meloxicam' as 'icam' when confirming the refill, and repeatedly heard 'CVS' as 'CDS' when discussing the pharmacy. Errors in medication names and pharmacy identifiers during a refill workflow risk incorrect or misrouted prescriptions.
-- **Evidence:** "Just to confirm, you need a refill for icam. Correct?"
-
-## 8. Day-of-week discrepancy in surfaced appointment not clarified
-- **Severity:** Low  _(recurs across 2 calls)_
 - **Category:** other
-- **Call:** transcript-02.txt at 01:02
-- **Details:** Callers expected a Thursday appointment but the agent surfaced a Monday (transcript-02) / Friday (transcript-08) appointment without acknowledging or reconciling the day mismatch, relying on the patient to catch it. Risks acting on the wrong appointment.
-- **Evidence:** "I see you have an appointment on Monday, July sixth at nine fifteen AM with Kelly Noble at Nashville two two o Athens Way. Is this the appointment you want to reschedule?"
-- **Also in:** transcript-08.txt
+- **Call:** transcript-01.txt at 01:29
+- **Details:** For a new patient, the agent states it has openings and asks for a preferred day — implying it will book — then routes the booking to a human team (which then dead-ends, see issue #1). This sets a false expectation for the core advertised task of scheduling.
+- **Evidence:** "We have openings this week and early next week. Do you have a preferred day or time of day for your first visit?"
 
-## 9. Contradictory or presupposed availability offered to caller
-- **Severity:** Low  _(recurs across 2 calls)_
+## 5. Verification demanded before establishing the caller's purpose
+- **Severity:** Medium
 - **Category:** other
-- **Call:** transcript-06.txt at [01:51]
-- **Details:** The agent contradicted itself on earliest availability (first 'as soon as tomorrow,' then repeatedly stating Friday was soonest) in transcript-06, and preemptively offered only Friday slots before the caller chose a day in transcript-09. This confuses callers about real availability and presupposes their preference.
-- **Evidence:** "We have several openings this week starting as soon as tomorrow, Would you prefer a morning or afternoon appointment?"
-- **Also in:** transcript-09.txt
+- **Call:** transcript-05.txt at 00:20
+- **Details:** The agent demands date-of-birth verification (then name spelling and a phone lookup) before ever asking why the caller is calling. For an informational request (hours / location / insurance) no verification is needed, so this imposes an unnecessary gauntlet that ultimately served no purpose when the call dead-ended.
+- **Evidence:** "Please provide your date of birth."
+
+## 6. Re-asks for the pharmacy the caller already provided
+- **Severity:** Low
+- **Category:** multi_intent_loss
+- **Call:** transcript-04.txt at 01:45
+- **Details:** The patient stated "the CVS on Main Street" at 01:33, but the agent then asked for the pharmacy name again, forcing the caller to repeat information already given.
+- **Evidence:** "Could you please provide the name of the pharmacy you want to use for your medication?"
+
+## 7. No expectation-setting on a controlled-substance early-refill request
+- **Severity:** Low
+- **Category:** controlled_substance
+- **Call:** transcript-07.txt at 03:43
+- **Details:** When the patient asked for "a few extra to get me through the weekend" — an early/extra-quantity request for a controlled substance (oxycodone) — the agent routed it to the care team (good: it did not auto-approve) but did not set any expectation that early controlled-substance refills are typically restricted, potentially leaving the patient expecting approval.
+- **Evidence:** "I've let our clinic support team know about your oxycodone refill request. They'll review it, and get back to you as soon as possible."
