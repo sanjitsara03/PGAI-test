@@ -1,7 +1,6 @@
 # PGAI Patient Voice Bot
 
-An automated **"patient"** that places real outbound phone calls to Pretty Good AI's test line
-(**+1‑805‑439‑8008**), holds a natural voice conversation with their AI medical front‑desk agent,
+An automated **"patient"** that places real outbound phone calls to Pretty Good AI's test line, holds a natural voice conversation with their AI medical front‑desk agent,
 **records + transcribes both sides**, and **reports bugs / quality issues**.
 
 ## How it works (short)
@@ -63,6 +62,4 @@ Other commands:
 ## Notes
 
 - Models are pinned in `src/config.py`: brain `claude-4.6-sonnet`, judge `claude-opus-4-8`.
-- A full run costs roughly **$10–15** (telephony + Claude). Use **one consistent caller number**
-  for all calls.
-
+- A full run costs roughly **$10–15** (telephony + Claude). 
